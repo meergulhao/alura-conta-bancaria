@@ -2,9 +2,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Adicionando o Scanner para poder coletar informações do usuário
         Scanner scanner = new Scanner(System.in);
 
-        String separador = "*********************************************";
+        // Declarando as variáveis
+        String separador = "*********************************************"; // Separador para deixar bonitinho
         String nomeCliente = "Guilherme Mergulhão";
         String tipoConta = "Corrente";
         double saldo = 2500.00;
@@ -26,25 +28,26 @@ public class Main {
         System.out.println("Tipo conta:\t\t\t" + tipoConta);
         System.out.println("Saldo em conta:\t\tR$ " + saldo);
 
+        // Loop para as operações
         while (operacao != 4) {
             System.out.println(separador);
             System.out.println(menu);
             operacao = scanner.nextInt();
             // Na aula, foi feito com if. Como eram muitas opções, preferi fazer com o switch
             switch (operacao) {
-                case 1:
+                case 1: // Só mostra o saldo
                     System.out.println("O saldo atual da conta é: R$ " + saldo);
                     break;
-                case 2:
+                case 2: // Permite um depósito, somando o valor ao saldo
                     System.out.println("Informe o valor a depositar:");
                     saldo += scanner.nextInt();
                     System.out.println("Depósito realizado com sucesso!");
                     System.out.println("Saldo atualizado: R$ " + saldo);
                     break;
-                case 3:
+                case 3: // Permite saque, subtraindo o valor do saldo
                     System.out.println("Informe o valor do saque:");
                     double valorSaque = scanner.nextInt();
-                    if (valorSaque > saldo) {
+                    if (valorSaque > saldo) { // Não permite que o valor do saque seja maior que o saldo disponível
                         System.out.println("Você não tem saldo suficiente. O saldo é de: R$ " + saldo);
                     } else {
                         saldo -= valorSaque;
@@ -52,10 +55,10 @@ public class Main {
                         System.out.println("Saldo atualizado: R$ " + saldo);
                     }
                     break;
-                case 4:
+                case 4: // Encerra
                     System.out.println("Obrigado e volte sempre!");
                     break;
-                default:
+                default: // Alerta opção inválida caso diferente das disponíveis
                     System.out.println("Opção inválida!");
                     break;
             }
